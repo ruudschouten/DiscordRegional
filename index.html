@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Regional</title>
+</head>
+<body>
+    <div>
+        <h2>Enter text</h2>
+        <input type="text" id="enteredText"/>
+        <button onclick="replaceText()">Generate</button>
+        <br/>
+        <h2>Memefied</h2>
+        <textarea id="output" style="width: 50%; height: 300px; margin-top: 18px"></textarea>
+        <button onclick="copyText()">Copy</button>
+        <p id="copySuccess" ></p>
+
+        <script>
+
+            String.prototype.format = function () {
+                var args = arguments;
+                return this.replace(/{(\d+)}/g, function (match, number) {
+                    return typeof args[number] !== 'undefined' ? args[number] : match;
+                });
+            };
+
+            function isLetter(str) {
+                return str.length === 1 && str.match(/[a-z]/i);
+            }
+
+            function replaceText() {
+                var text = document.getElementById("enteredText").value;
+                var regional = "";
+                for (var i = 0; i < text.length; i++) {
+                    var char = text.charAt(i);
+                    if (isLetter(char)) {
+                        regional += ":regional_indicator_{0}: ".format(char.toLowerCase());
+                    }
+                    else if (char === " ") {
+                        regional += "  ";
+                    }
+                    else if (char === "?") {
+                        regional += ":grey_question: ";
+                    } else if (char === "!") {
+                        regional += ":grey_exclamation: ";
+                    }
+                }
+                var output = document.getElementById("output");
+                output.value = regional;
+            }
+
+            function copyText() {
+                var output = document.getElementById("output");
+                output.focus();
+                output.select();
+                var copySuccess = document.getElementById("copySuccess");
+                try {
+                    var successful = document.execCommand('copy');
+                    copySuccess.innerText = "Text copied";
+                } catch (err) {
+                    copySuccess.innerText = "Failed to copy text";
+                }
+            }
+        </script>
+    </div>
+</body>
+</html>
