@@ -15,7 +15,9 @@
         <p id="copySuccess" ></p>
 
         <script>
-
+		var ones= ['zero','one','two','three','four','five','six','seven','eight','nine'];
+		
+		
             String.prototype.format = function () {
                 var args = arguments;
                 return this.replace(/{(\d+)}/g, function (match, number) {
@@ -26,6 +28,10 @@
             function isLetter(str) {
                 return str.length === 1 && str.match(/[a-z]/i);
             }
+			
+			function isNumber(str) {
+			    return str.length == 1 && str.match(/^\d+$/);
+			}
 
             function replaceText() {
                 var text = document.getElementById("enteredText").value;
@@ -35,6 +41,9 @@
                     if (isLetter(char)) {
                         regional += ":regional_indicator_{0}: ".format(char.toLowerCase());
                     }
+					else if (isNumber(char)) {
+					    regional += ":" + ones[ parseInt(char)] + ": ";
+					}
                     else if (char === " ") {
                         regional += "  ";
                     }
@@ -42,7 +51,14 @@
                         regional += ":grey_question: ";
                     } else if (char === "!") {
                         regional += ":grey_exclamation: ";
-                    }
+                    } else if (char === "+") {
+					    regional += ":heavy_plus_sign: ";					
+                    } else if (char === "-") {
+					    regional += ":heavy_minus_sign: ";
+					}
+					else {
+					    regional += char + " ";						
+					}
                 }
                 var output = document.getElementById("output");
                 output.value = regional;
