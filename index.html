@@ -2,81 +2,18 @@
 <html lang="en">
 <head>
     <title>Regional</title>
+    <script src="regional.js"></script>
 </head>
 <body>
     <div>
         <h2>Enter text</h2>
-        <input type="text" id="enteredText"/>
+        <textarea id="enteredText" style="width: 50%; height: 300px; margin-top: 18px"></textarea>
         <button onclick="replaceText()">Generate</button>
         <br/>
         <h2>Memefied</h2>
         <textarea id="output" style="width: 50%; height: 300px; margin-top: 18px"></textarea>
         <button onclick="copyText()">Copy</button>
-        <p id="copySuccess" ></p>
-
-        <script>
-		var ones= ['zero','one','two','three','four','five','six','seven','eight','nine'];
-		
-		
-            String.prototype.format = function () {
-                var args = arguments;
-                return this.replace(/{(\d+)}/g, function (match, number) {
-                    return typeof args[number] !== 'undefined' ? args[number] : match;
-                });
-            };
-
-            function isLetter(str) {
-                return str.length === 1 && str.match(/[a-z]/i);
-            }
-			
-			function isNumber(str) {
-			    return str.length == 1 && str.match(/^\d+$/);
-			}
-
-            function replaceText() {
-                var text = document.getElementById("enteredText").value;
-                var regional = "";
-                for (var i = 0; i < text.length; i++) {
-                    var char = text.charAt(i);
-                    if (isLetter(char)) {
-                        regional += ":regional_indicator_{0}: ".format(char.toLowerCase());
-                    }
-					else if (isNumber(char)) {
-					    regional += ":" + ones[ parseInt(char)] + ": ";
-					}
-                    else if (char === " ") {
-                        regional += "  ";
-                    }
-                    else if (char === "?") {
-                        regional += ":grey_question: ";
-                    } else if (char === "!") {
-                        regional += ":grey_exclamation: ";
-                    } else if (char === "+") {
-					    regional += ":heavy_plus_sign: ";					
-                    } else if (char === "-") {
-					    regional += ":heavy_minus_sign: ";
-					}
-					else {
-					    regional += char + " ";						
-					}
-                }
-                var output = document.getElementById("output");
-                output.value = regional;
-            }
-
-            function copyText() {
-                var output = document.getElementById("output");
-                output.focus();
-                output.select();
-                var copySuccess = document.getElementById("copySuccess");
-                try {
-                    var successful = document.execCommand('copy');
-                    copySuccess.innerText = "Text copied";
-                } catch (err) {
-                    copySuccess.innerText = "Failed to copy text";
-                }
-            }
-        </script>
+        <p id="copySuccess"></p>
     </div>
 </body>
 </html>
