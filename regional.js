@@ -71,6 +71,8 @@ function replaceText() {
     }
     var output = document.getElementById("output");
     output.value = result;
+
+    copyText();
 }
 
 function copyText() {
