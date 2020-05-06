@@ -1,4 +1,4 @@
-var ones = ['0️⃣','1️⃣','2️⃣','3️⃣','4️⃣','5️⃣','6️⃣','7️⃣','8️⃣','9️⃣'];
+var numbers = ['0️⃣','1️⃣','2️⃣','3️⃣','4️⃣','5️⃣','6️⃣','7️⃣','8️⃣','9️⃣'];
 var seperator = "​";
 		
 String.prototype.format = function () {
@@ -54,7 +54,7 @@ function replaceText() {
             result += regional + seperator;
         }
         else if (isNumber(char)) {
-            result += ones[ parseInt(char)] + seperator;
+            result += numbers[parseInt(char)] + seperator;
         }
         else if (char === "#") {
             result += "#️⃣" + seperator;
