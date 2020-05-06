@@ -56,23 +56,17 @@ function replaceText() {
         else if (isNumber(char)) {
             result += numbers[parseInt(char)] + seperator;
         }
-        else if (char === "#") {
-            result += "#️⃣" + seperator;
-        }
-        else if (char === "?") {
-            result += "❔" + seperator;
-        } else if (char === "!") {
-            result += "❕" + seperator;
-        } else if (char === "+") {
-            result += "➕" + seperator;
-        } else if (char === "-") {
-            result += "➖" + seperator;
-        }
-        else if (char === " ") {
-            result += char;
-        }
         else {
-            result += char + seperator;
+            switch(char) {
+                case "#": result += "#️⃣"; break;
+                case "?": result += "❔"; break;
+                case "!": result += "❕"; break;
+                case "+": result += "➕"; break;
+                case "-": result += "➖"; break;
+                case " ": result += char; continue; // We continue here because we don't want the space to use another symbol, resulting in less other symbols we can use for the entire message in Discord.
+                default: result += char; break;
+            }
+            result += seperator;
         }
     }
     var output = document.getElementById("output");
