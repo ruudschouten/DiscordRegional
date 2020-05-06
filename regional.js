@@ -1,4 +1,5 @@
 var ones = ['0️⃣','1️⃣','2️⃣','3️⃣','4️⃣','5️⃣','6️⃣','7️⃣','8️⃣','9️⃣'];
+var seperator = "​";
 		
 String.prototype.format = function () {
     var args = arguments;
@@ -50,28 +51,28 @@ function replaceText() {
                 case "y": regional = "🇾"; break;
                 case "z": regional = "🇿"; break;
             }
-            result += regional + " ";
+            result += regional + seperator;
         }
         else if (isNumber(char)) {
-            result += ones[ parseInt(char)] + " ";
-        }
-        else if (char === " ") {
-            result += "  ";
+            result += ones[ parseInt(char)] + seperator;
         }
         else if (char === "#") {
-            result += "#️⃣ ";
+            result += "#️⃣" + seperator;
         }
         else if (char === "?") {
-            result += "❔ ";
+            result += "❔" + seperator;
         } else if (char === "!") {
-            result += "❕ ";
+            result += "❕" + seperator;
         } else if (char === "+") {
-            result += "➕ ";
+            result += "➕" + seperator;
         } else if (char === "-") {
-            result += "➖ ";
+            result += "➖" + seperator;
+        }
+        else if (char === " ") {
+            result += char;
         }
         else {
-            result += char + " ";
+            result += char + seperator;
         }
     }
     var output = document.getElementById("output");
