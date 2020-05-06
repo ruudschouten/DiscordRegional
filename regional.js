@@ -8,12 +8,12 @@ String.prototype.format = function () {
     });
 };
 
-function isLetter(str) {
-    return str.length === 1 && str.match(/[a-z]/i);
+function isLetter(char) {
+    return char.length === 1 && char.match(/[a-z]/i);
 }
 
-function isNumber(str) {
-    return str.length == 1 && str.match(/^\d+$/);
+function isNumber(char) {
+    return char.length == 1 && char.match(/^\d+$/);
 }
 
 function replaceText() {
