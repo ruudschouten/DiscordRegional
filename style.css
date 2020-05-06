@@ -1,0 +1,67 @@
+h2 {
+    font-family: consolas;
+    padding-left: 16px;
+    font-weight: lighter;
+    text-transform: lowercase;
+    color: rgb(87, 87, 87);
+}
+
+h2::before {
+    content: ":: ";
+    font-size: small;
+    color: rgb(182, 182, 182);
+}
+
+h2::after {    
+    content: " ::";
+    font-size: small;
+    color: rgb(182, 182, 182);
+}
+
+textarea {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 8px;
+    margin-left: 8px;
+    min-width: 50%;
+    min-height: 300px;
+    overflow: auto;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px #999;
+}
+
+button {
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 16px;
+    position: relative;
+    bottom: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    outline: none;
+    border: none;
+    border-radius: 3px;
+    color: white;
+    background-color: rgb(87, 87, 87);
+    box-shadow: 0 9px rgb(120, 120, 140);
+    transition-duration: 0.1s;
+}
+
+button:hover {
+    background-color: rgb(70, 70, 70);
+}
+
+button:active {
+    background-color: rgb(65, 65, 65);
+    box-shadow: 0 5px rgb(110, 110, 140);
+    transform: translateY(4px);
+}
+
+p {
+    font-family: consolas;
+    padding-left: 16px;
+    text-transform: lowercase;
+    color: rgb(65, 65, 65);
+}
