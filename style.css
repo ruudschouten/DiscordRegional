@@ -51,11 +51,13 @@ button {
 
 button:hover {
     background-color: rgb(70, 70, 70);
+    box-shadow: 0 8px rgb(120, 120, 140);
+    transform: translateY(1px);
 }
 
 button:active {
-    background-color: rgb(65, 65, 65);
-    box-shadow: 0 5px rgb(110, 110, 140);
+    background-color: rgb(60, 60, 60);
+    box-shadow: 0 5px rgb(120, 120, 140);
     transform: translateY(4px);
 }
 
